@@ -12,6 +12,10 @@ variables:
 
 steps:
 
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'Artifacts Feed Azure'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
@@ -27,9 +31,6 @@ steps:
     packagesToPack: '**/*.csproj'
     nobuild: true
     versioningScheme: 'off'
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'Artifacts Feed Azure'
 - task: NuGetCommand@2
   displayName: 'nuget push'
   inputs:
