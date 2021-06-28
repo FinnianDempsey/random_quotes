@@ -33,3 +33,9 @@ steps:
     PackageId: 'random_quotes'
     PackageFormat: 'NuPkg'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '395bef12-2dc8-4fcb-8c32-6fc1be87bc82'
