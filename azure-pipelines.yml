@@ -32,10 +32,12 @@ steps:
   inputs:
     PackageId: 'random_quotes'
     PackageFormat: 'NuPkg'
+    SourcePath: '${Build.StagingDirectory}'
+    OutputPath: '${Build.StagingDirectory}/packages'
 
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
+    packagesToPush: '$(Build.StagingDirectory)/packages/*.nupkg;!$(Build.ArtifactStagingDirectory)/packages/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '395bef12-2dc8-4fcb-8c32-6fc1be87bc82'
