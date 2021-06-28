@@ -28,4 +28,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: OctopusPack@4
+  inputs:
+    PackageId: 'random_quotes'
+    PackageFormat: 'NuPkg'
 
